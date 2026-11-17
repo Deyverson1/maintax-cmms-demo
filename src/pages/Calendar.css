@@ -1,0 +1,106 @@
+.maintax-calendar {
+  --fc-border-color: #e2e8f0;
+  --fc-today-bg-color: #f0f9ff;
+  --fc-neutral-bg-color: #f8fafc;
+  --fc-button-bg-color: #082f49;
+  --fc-button-border-color: #082f49;
+  --fc-button-hover-bg-color: #0c4a6e;
+  --fc-button-hover-border-color: #0c4a6e;
+  --fc-button-active-bg-color: #0c4a6e;
+  --fc-button-active-border-color: #0c4a6e;
+  font-size: 0.875rem;
+}
+.maintax-calendar .fc-daygrid-event,
+.maintax-calendar .fc-daygrid-event .fc-event-main {
+  white-space: nowrap !important;
+  overflow: hidden;
+}
+
+.maintax-calendar .fc-daygrid-day-frame {
+  min-height: 130px;
+}
+/*  */
+.fc .fc-daygrid-day:hover {
+  background-color: #eff6ff;
+  cursor: pointer;
+}
+/* Toolbar */
+.maintax-calendar .fc-toolbar {
+  margin-bottom: 1.25rem;
+}
+.maintax-calendar .fc-toolbar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #082f49;
+}
+.maintax-calendar .fc-toolbar-title::first-letter {
+  text-transform: uppercase;
+}
+.maintax-calendar .fc-button {
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  box-shadow: none !important;
+}
+
+/* Cuadrícula más limpia */
+.maintax-calendar .fc-theme-standard .fc-scrollgrid {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.maintax-calendar .fc-col-header-cell {
+  background: #f8fafc;
+  padding: 0.5rem 0;
+}
+.maintax-calendar .fc-col-header-cell-cushion {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.maintax-calendar .fc-day-sat,
+.maintax-calendar .fc-day-sun {
+  background: #fafafa;
+}
+
+/* Número del día; el de hoy va en círculo */
+.maintax-calendar .fc-daygrid-day-number {
+  margin: 4px;
+  padding: 2px 6px;
+  font-size: 0.8125rem;
+  color: #475569;
+}
+.maintax-calendar .fc-day-today {
+  background: #f0f9ff !important;
+}
+.maintax-calendar .fc-day-today .fc-daygrid-day-number {
+  background: #082f49;
+  color: #fff;
+  border-radius: 9999px;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* Eventos: la tarjeta la dibuja renderEvent */
+.maintax-calendar .fc-event {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+.maintax-calendar .fc-daygrid-event {
+  margin: 1px 4px;
+}
+.maintax-calendar .fc-event:hover {
+  filter: brightness(0.97);
+}
+
+/* Enlace "+N más" */
+.maintax-calendar .fc-daygrid-more-link {
+  margin-left: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0369a1;
+}

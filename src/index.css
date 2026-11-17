@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter/wght.css";
+
+body {
+  font-family: "Inter Variable", sans-serif;
+  overflow-y: scroll;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}

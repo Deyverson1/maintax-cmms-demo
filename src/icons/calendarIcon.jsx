@@ -1,0 +1,36 @@
+export default function CalendarIcon({ size = 48 }) {
+  const dia = new Date().getDate();
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" />
+      <path d="M16 3v4" />
+      <path d="M8 3v4" />
+      <path d="M4 11h16" />
+
+      <text
+        x="12"
+        y="18.2"
+        textAnchor="middle"
+        fontSize={dia > 9 ? 6.5 : 7.5}
+        fontWeight="700"
+        fontFamily="system-ui, sans-serif"
+        fill="currentColor"
+        stroke="none"
+      >
+        {dia}
+      </text>
+    </svg>
+  );
+}
