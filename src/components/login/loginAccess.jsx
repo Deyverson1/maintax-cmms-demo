@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import User from "../../icons/user";
 import Lock from "../../icons/lock";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../utility/supabase";
 import EyeIconOn from "../../icons/eyeIconOn";
 import EyeOffIcon from "../../icons/eyeIconOff";
@@ -12,6 +12,12 @@ export default function LoginAccess({ setRequestForm }) {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(true);
   const navigate = useNavigate();
+
+  //prefilled login
+  useEffect(() => {
+    setEmail("maintax-demo@ejemplo.com");
+    setPassword("123456789");
+  });
 
   const handleLogin = async (e) => {
     e.preventDefault();
