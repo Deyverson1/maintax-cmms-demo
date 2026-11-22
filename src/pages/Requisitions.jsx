@@ -92,17 +92,32 @@ export default function Requisitions() {
             </div>
           </div>
         </section>
-        <section className="flex justify-between py-10">
-          <div className="flex flex-col items-center gap-2 md:flex-row">
-            <h3 className="mr-4 text-xl font-bold text-[#191C1D]">
-              Listado de Requisiciones
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
+        <section className="flex flex-col py-10">
+          <h3 className="mr-4 text-xl font-bold text-[#191C1D]">
+            Listado de Requisiciones
+          </h3>
+          <div className="mt-3 flex w-full flex-col items-center gap-4 md:flex-row lg:mt-5">
+            <section className="w-full lg:block">
+              <div className="relative w-full">
+                <input
+                  type="text"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  className="w-full rounded-xl bg-gray-200 px-12 py-3 text-xs outline-gray-200 md:text-base"
+                  placeholder="Buscar requisiciones. Ej. Servicio de afilado cuchilla"
+                />
+                <div className="absolute top-1/2 left-4 -translate-y-2 text-gray-500">
+                  <SearchIcon size={18} />
+                </div>
+              </div>
+            </section>
+
+            <div className="flex h-fit w-full flex-wrap items-center justify-center gap-2 lg:flex-nowrap lg:gap-4">
               {statuses.map((status) => (
                 <button
                   key={status}
                   onClick={() => setStatusFilter(status)}
-                  className={`cursor-pointer rounded-full border px-4 py-1.5 text-xs uppercase md:text-sm ${
+                  className={`letter cursor-pointer rounded-full border px-4 py-1.5 text-xs whitespace-nowrap uppercase md:text-sm ${
                     statusFilter === status
                       ? "border-gray-400 bg-gray-200"
                       : "border-gray-300 bg-white"
