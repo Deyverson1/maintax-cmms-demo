@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function OrderTypeSelector({ orderType, setOrderType }) {
   const orderTypes = [
-    { id: "nota", label: "Nota" },
+    // { id: "nota", label: "Nota" },
     { id: "cotizacion", label: "Cotización" },
   ];
   const handleType = (id) => {
@@ -11,15 +11,15 @@ export default function OrderTypeSelector({ orderType, setOrderType }) {
   };
   return (
     <div>
-      <p className="font-semibold tracking-wider text-gray-700 uppercase text-md">
+      <p className="text-md font-semibold tracking-wider text-gray-700 uppercase">
         Tipo de orden
       </p>
-      <div className="self-start mt-3 bg-gray-200 rounded-lg w-fit">
+      <div className="mt-3 w-fit self-start rounded-lg bg-gray-200">
         {orderTypes.map((data) => (
           <button
             type="button"
             id={data.id}
-            className={`py-2.5 cursor-pointer transition-all rounded-lg duration-300 text-md px-10 m-1 ${orderType === data.id ? "bg-[#ffffff]" : "hover:bg-white/30"} `}
+            className={`text-md m-1 cursor-pointer rounded-lg px-10 py-2.5 transition-all duration-300 ${orderType === data.id ? "bg-[#ffffff]" : "hover:bg-white/30"} `}
             onClick={() => handleType(data.id)}
           >
             {data.label}
