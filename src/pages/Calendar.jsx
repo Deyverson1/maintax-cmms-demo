@@ -26,7 +26,7 @@ export default function Calendar() {
   const [refresh, setRefresh] = useState(0);
   const [idNoteEditing, setIdNoteEditing] = useState(null);
   const navigate = useNavigate();
-  console.log(refresh);
+
   const priorityWeight = { Alta: 0, Media: 1, Baja: 2 };
   useEffect(() => {
     supabase

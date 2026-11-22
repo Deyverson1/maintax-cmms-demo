@@ -43,7 +43,7 @@ export default function AssetPendingTask() {
       <section className="flex gap-6">
         <div className="w-full">
           {assetTask.map((dato, index) => {
-            console.log(dato.deadline);
+            // console.log(dato.deadline);
             const currentStatus = priority.find(
               (elemento) => elemento.id === dato.priority,
             );
