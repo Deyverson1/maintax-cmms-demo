@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../utility/supabase";
 
-export function useKpis({ refresh }) {
+export function useKpis(refresh) {
   const [kpiData, setKpiData] = useState({
     active: 0,
     thisMonth: 0,
