@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import LogoutIcon from "../../icons/logoutIcon";
 import XIcon from "../../icons/xIcon";
 import Sidebar from "../common/Sidebar";
+import Logout from "../../hooks/useLogout";
 
 export default function MobileNav({ isMobileNavOpen, setIsMobileNavOpen }) {
   useEffect(() => {
@@ -56,7 +57,10 @@ export default function MobileNav({ isMobileNavOpen, setIsMobileNavOpen }) {
           <Sidebar isMobileNavOpen={isMobileNavOpen} />
         </section>
         <footer className="mt-auto gap-4 p-4">
-          <button className="flex gap-2 text-sm text-red-500">
+          <button
+            className="flex gap-2 text-sm text-red-500"
+            onClick={Logout()}
+          >
             <LogoutIcon size={20} />
             Cerrar sesión
           </button>
