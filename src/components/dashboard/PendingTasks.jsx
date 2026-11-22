@@ -43,7 +43,7 @@ export default function PendingTasks() {
     return vencido ? `Retraso ${texto}` : `Faltan ${texto}`;
   }
   return (
-    <main className="flex w-[60%] flex-col gap-4">
+    <main className="flex w-full flex-col gap-4">
       <div className="flex items-center justify-between">
         <h2 className="items flex text-xl font-bold text-[#0A3960]">
           Tareas Pendientes

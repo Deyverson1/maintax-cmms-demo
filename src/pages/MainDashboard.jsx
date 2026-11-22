@@ -46,7 +46,7 @@ export default function MainDashboard() {
             <KpiCards />
             <section className="flex gap-8 py-12">
               <PendingTasks />
-              <RecentActivity />
+              {/* <RecentActivity /> */}
             </section>
           </main>
         </section>
