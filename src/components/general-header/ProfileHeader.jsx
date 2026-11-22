@@ -1,14 +1,6 @@
-import { useState } from "react";
-import UserProfile from "./UserProfile";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "../../utility/supabase";
+import Logout from "../../hooks/useLogout";
 
 export default function ProfileHeader({ setProfileActive, profileActive }) {
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/");
-  };
   return (
     <>
       {profileActive ? (
@@ -21,7 +13,7 @@ export default function ProfileHeader({ setProfileActive, profileActive }) {
           <div>
             <button
               className="top-6 right-8 z-10 cursor-pointer rounded bg-[#0A3960] px-4 py-1.5 text-white uppercase transition-all duration-300 hover:scale-105"
-              onClick={handleLogout}
+              onClick={Logout()}
             >
               Cerrar sesión
             </button>
