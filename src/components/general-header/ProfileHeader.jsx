@@ -12,7 +12,7 @@ export default function ProfileHeader({ setProfileActive, profileActive }) {
   return (
     <>
       {profileActive ? (
-        <section className="absolute z-50 flex flex-col gap-4 p-4 bg-gray-200 rounded-lg top-25 right-12">
+        <section className="absolute top-25 right-2 z-50 flex flex-col gap-4 rounded-lg bg-gray-200 p-4 lg:right-12">
           <div className="">
             <h4>Deyverson Herrera</h4>
             <p>deyversongp@gmail.com</p>

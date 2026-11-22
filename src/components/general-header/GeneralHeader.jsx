@@ -8,7 +8,7 @@ import UserProfile from "./UserProfile";
 export default function GeneralHeader() {
   const [profileActive, setProfileActive] = useState(false);
   return (
-    <section className="inline-flex w-full justify-end py-10">
+    <section className="inline-flex w-full justify-between py-10 lg:justify-end">
       {/* <div className="relative flex w-[60%]">
         <input
           type="text"
@@ -19,7 +19,7 @@ export default function GeneralHeader() {
           <SearchIcon size={18} />
         </div>
       </div> */}
-      <div className="flex w-[15%] items-center justify-end gap-15 text-[#0A3960]">
+      <div className="flex items-center justify-end gap-4 text-[#0A3960] lg:w-[15%] lg:gap-15">
         <span>
           <BellIcon size={30} />
         </span>
