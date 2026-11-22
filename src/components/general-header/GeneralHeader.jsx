@@ -4,11 +4,23 @@ import SearchIcon from "../../icons/searchIcon";
 import SettingIcons from "../../icons/settingsIcon";
 import ProfileHeader from "./ProfileHeader";
 import UserProfile from "./UserProfile";
+import MenuIcon from "../../icons/menuIcon";
+import MobileNav from "./MobileNav";
 
 export default function GeneralHeader() {
   const [profileActive, setProfileActive] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
   return (
-    <section className="inline-flex w-full justify-between py-10 lg:justify-end">
+    <section className="inline-flex w-full justify-between lg:justify-end">
+      {isMobileNavOpen ? (
+        <MobileNav
+          isMobileNavOpen={isMobileNavOpen}
+          setIsMobileNavOpen={setIsMobileNavOpen}
+        />
+      ) : (
+        ""
+      )}
       {/* <div className="relative flex w-[60%]">
         <input
           type="text"
@@ -19,13 +31,21 @@ export default function GeneralHeader() {
           <SearchIcon size={18} />
         </div>
       </div> */}
-      <div className="flex items-center justify-end gap-4 text-[#0A3960] lg:w-[15%] lg:gap-15">
-        <span>
+      <div className="flex items-center justify-end gap-4 py-10 text-[#0A3960] lg:w-[15%] lg:gap-15">
+        <button
+          type="button"
+          onClick={() => setIsMobileNavOpen(true)}
+          className="cursor-pointer transition-all duration-300 hover:-translate-y-0.5 lg:hidden"
+        >
+          {" "}
+          <MenuIcon size={30} />
+        </button>
+        {/* <span>
           <BellIcon size={30} />
         </span>
         <span>
           <SettingIcons size={30} />
-        </span>
+        </span> */}
       </div>
 
       <ProfileHeader
