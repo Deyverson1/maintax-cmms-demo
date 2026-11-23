@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OutboundModal from "../components/outbounds/OutboundModal";
 import SidebarNavigation from "../components/ui/SidebarNavigation";
 import FilterSearch from "../icons/filterSearch";
@@ -6,9 +6,32 @@ import PackageIcon from "../icons/packageIcon";
 import SearchIcon from "../icons/searchIcon";
 import UploadIcon from "../icons/uploadIcon";
 import GeneralHeader from "../components/general-header/GeneralHeader";
+import { supabase } from "../utility/supabase";
 
 export default function PartOutbound() {
   const [isModalActive, setModalActive] = useState(false);
+  const [refresh, setRefresh] = useState(0);
+  const [data, setData] = useState([]);
+
+  const [inputOutbound, setInputOutbound] = useState("");
+
+  const outboundFilter = data.filter((item) => {
+    const matches =
+      item?.item.toLowerCase().includes(inputOutbound.toLowerCase()) ||
+      item?.referencia.toLowerCase().includes(inputOutbound.toLowerCase());
+
+    return matches;
+  });
+
+  useEffect(() => {
+    const fetchOutbounds = async () => {
+      const { data, error } = await supabase.from("outbounds").select("*");
+      setData(data);
+    };
+    fetchOutbounds();
+  }, [refresh]);
+
+  console.log(data);
   return (
     <section className="flex">
       <SidebarNavigation isModalActive={isModalActive} />
@@ -39,7 +62,8 @@ export default function PartOutbound() {
             <div className="relative w-full">
               <input
                 type="text"
-
+                value={inputOutbound}
+                onChange={(e) => setInputOutbound(e.target.value)}
                 className="w-full rounded-xl bg-[#f2f4f5] px-13 py-3"
                 placeholder="Buscar reportes de salida de repuestos de almacén..."
               />
@@ -62,19 +86,29 @@ export default function PartOutbound() {
               <li>Colaborador</li>
               <li>Numero de salida</li>
             </ul>
-            <ul className="grid w-full grid-cols-7 py-5 text-center text-sm font-semibold">
-              <li className="uppercase">R300-150</li>
-              <li>Rodamiento 6006 FAG</li>
-              <li>6</li>
-              <li>5</li>
-              <li>0</li>
-              <li>1</li>
-            </ul>
+            {outboundFilter.map((dato) => (
+              <ul className="grid w-full grid-cols-7 py-5 text-center text-sm font-semibold">
+                <li className="uppercase">{dato.fecha} </li>
+                <li>{dato.item} </li>
+                <li>{dato.cantidad} </li>
+                <li>{dato.referencia} </li>
+                <li>{dato.destino} </li>
+                <li>{dato.colaborador} </li>
+                <li>{dato.numero} </li>
+              </ul>
+            ))}
           </section>
         </div>
       </section>
 
-      {isModalActive ? <OutboundModal setModalActive={setModalActive} /> : ""}
+      {isModalActive ? (
+        <OutboundModal
+          setModalActive={setModalActive}
+          setRefresh={setRefresh}
+        />
+      ) : (
+        ""
+      )}
       {isModalActive && (
         <div className="pointer-events-none absolute inset-0 z-30 bg-black/20" />
       )}
