@@ -70,20 +70,20 @@ export default function WorkOrders() {
                 </Link>
               </div>
             </section>
-            <section className="hidden justify-between gap-4 rounded-2xl bg-[#f2f4f5] p-4 lg:flex">
-              <div className="relative w-[70%]">
+            <section className="flex justify-between gap-4 rounded-2xl bg-[#f2f4f5] p-4">
+              <div className="relative w-full text-xs lg:w-[70%] lg:text-base">
                 <input
                   type="text"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
-                  className="w-full rounded-xl bg-[#ffffff] px-13 py-3"
+                  className="w-full rounded-xl bg-[#ffffff] px-13 py-3 pr-0"
                   placeholder="Buscar tareas y Ordenes de Trabajo..."
                 />
                 <div className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-500">
                   <SearchIcon size={20} />
                 </div>
               </div>
-              <div className="relative flex items-center">
+              <div className="relative hidden items-center lg:flex">
                 <select
                   name="Estado"
                   className="appearance-none rounded-xl bg-[#ffffff] px-4 py-3 pr-10 text-gray-800 hover:cursor-pointer"
@@ -103,7 +103,7 @@ export default function WorkOrders() {
               </div>
               <button
                 onClick={handleSortTime}
-                className="flex items-center justify-center rounded-xl bg-[#ffffff] px-4 py-3 hover:cursor-pointer"
+                className="hidden items-center justify-center rounded-xl bg-[#ffffff] px-4 py-3 hover:cursor-pointer lg:flex"
               >
                 <WatchIcon size={24} />
               </button>
@@ -120,7 +120,7 @@ export default function WorkOrders() {
                   <ChevronDown size={24} />
                 </div>
               </div> */}
-              <button className="cursor-pointer rounded-xl bg-gray-300 px-4">
+              <button className="hidden cursor-pointer rounded-xl bg-gray-300 px-4 lg:block">
                 <FilterSearch size={24} />
               </button>
             </section>
