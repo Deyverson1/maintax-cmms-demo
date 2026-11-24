@@ -76,18 +76,18 @@ export default function PendingTasks() {
             <article
               onClick={() => navigate(`/WorkOrders/Edit/${data.id}`)}
               key={data.id}
-              className="flex min-h-38 flex-1 flex-col items-center justify-between gap-2 rounded-2xl border border-white bg-[#ffffff] px-4 py-4 shadow-[0_5px_50px_-15px_rgba(0,0,0,0.3)] shadow-gray-200 hover:cursor-pointer hover:border-[#0A3960] lg:flex-row lg:gap-8 lg:px-8"
+              className="flex flex-1 flex-col justify-between gap-2 rounded-2xl border border-white bg-[#ffffff] px-4 py-4 shadow-[0_5px_50px_-15px_rgba(0,0,0,0.3)] shadow-gray-200 hover:cursor-pointer hover:border-[#0A3960] lg:min-h-38 lg:flex-row lg:items-center lg:gap-8 lg:px-8"
             >
-              <section className="flex items-center justify-between gap-4 lg:gap-6">
-                <div className="flex items-center justify-center self-center rounded-lg bg-gray-100 p-2 text-[#0A3960] lg:p-4">
+              <section className="flex gap-4 lg:items-center lg:justify-between lg:gap-6">
+                <div className="flex h-fit rounded-lg bg-gray-100 p-2 text-[#0A3960] lg:items-center lg:justify-center lg:self-center lg:p-4">
                   <ClipboardIcon size={30} />
                 </div>
                 <div className="flex flex-col gap-0.5">
                   <div className="flex items-center">
-                    <h4 className="text-medium gray-500 text-xs tracking-wider lg:text-sm">
+                    <h4 className="text-medium gray-500 text-xs tracking-wider lg:text-base">
                       Orden de trabajo #{data.order_number} •
                     </h4>
-                    <h4 className="text-xs font-bold tracking-wide text-[#0A3960] lg:text-lg">
+                    <h4 className="text-xs font-bold tracking-wide text-[#0A3960] lg:text-base">
                       {/* {data.title} -{" "} */}
                       <span
                         className={`flex w-fit items-center gap-1 rounded-full border-0 px-1 lg:mt-0 ${
