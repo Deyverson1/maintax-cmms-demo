@@ -45,9 +45,9 @@ export default function PendingTasks() {
   return (
     <main className="flex w-full flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h2 className="items flex text-xl font-bold text-[#0A3960]">
+        <h2 className="flex items-center gap-2 text-base font-bold text-[#0A3960] lg:gap-0 lg:text-xl">
           Tareas Pendientes
-          <span className="10s ml-4 animate-pulse rounded-full bg-red-500 px-4 py-1 text-sm text-white uppercase [animation-duration:2s]">
+          <span className="10s h-fit animate-pulse rounded-full bg-red-500 px-2 py-1 text-xs whitespace-nowrap text-white [animation-duration:2s] lg:ml-4 lg:px-4 lg:text-sm">
             {priorityAmount} Urgentes
           </span>
           {/* <span className="ml-4 px-3 py-1.5 rounded-3xl text-sm bg-[#0A3960] text-white bg-">
@@ -56,9 +56,9 @@ export default function PendingTasks() {
         </h2>
         <Link
           to={"/WorkOrders"}
-          className="text-lg font-bold text-[#0A3960] underline"
+          className="text-xs font-bold whitespace-nowrap text-[#0A3960] underline lg:text-lg"
         >
-          Ver todas las tareas
+          Ver todas
         </Link>
       </div>
       <section className="flex flex-1 flex-col gap-4">
@@ -76,21 +76,21 @@ export default function PendingTasks() {
             <article
               onClick={() => navigate(`/WorkOrders/Edit/${data.id}`)}
               key={data.id}
-              className="flex min-h-38 flex-1 items-center justify-between gap-8 rounded-2xl border border-white bg-[#ffffff] px-8 py-4 shadow-[0_5px_50px_-15px_rgba(0,0,0,0.3)] shadow-gray-200 hover:cursor-pointer hover:border-[#0A3960]"
+              className="flex min-h-38 flex-1 flex-col items-center justify-between gap-2 rounded-2xl border border-white bg-[#ffffff] px-4 py-4 shadow-[0_5px_50px_-15px_rgba(0,0,0,0.3)] shadow-gray-200 hover:cursor-pointer hover:border-[#0A3960] lg:flex-row lg:gap-8 lg:px-8"
             >
-              <section className="flex items-center justify-between gap-6">
-                <div className="flex items-center justify-center self-center rounded-lg bg-gray-100 p-4 text-[#0A3960]">
+              <section className="flex items-center justify-between gap-4 lg:gap-6">
+                <div className="flex items-center justify-center self-center rounded-lg bg-gray-100 p-2 text-[#0A3960] lg:p-4">
                   <ClipboardIcon size={30} />
                 </div>
                 <div className="flex flex-col gap-0.5">
                   <div className="flex items-center">
-                    <h4 className="text-medium gray-500 text-sm tracking-wider">
+                    <h4 className="text-medium gray-500 text-xs tracking-wider lg:text-sm">
                       Orden de trabajo #{data.order_number} •
                     </h4>
-                    <h4 className="text-lg font-bold tracking-wide text-[#0A3960]">
+                    <h4 className="text-xs font-bold tracking-wide text-[#0A3960] lg:text-lg">
                       {/* {data.title} -{" "} */}
                       <span
-                        className={`flex w-fit items-center gap-1 rounded-full border-0 px-1 text-sm lg:mt-0 ${
+                        className={`flex w-fit items-center gap-1 rounded-full border-0 px-1 lg:mt-0 ${
                           currentStatus ? currentStatus.activeClass : ""
                         } bg-white!`}
                       >
@@ -98,16 +98,16 @@ export default function PendingTasks() {
                       </span>
                     </h4>
                   </div>
-                  <h3 className="text-xl font-bold text-[#191C1D]">
+                  <h3 className="text-base font-bold text-[#191C1D] lg:text-xl">
                     {data.title}
                   </h3>
-                  <p className="line-clamp-3 text-gray-500">
+                  <p className="line-clamp-3 text-sm text-gray-500">
                     {workOrderDescription}
                   </p>
                 </div>
               </section>
               <div
-                className={`flex max-w-2/12 min-w-2/12 items-center justify-center gap-0.5 text-center text-sm ${timeLeft.includes("Retraso") ? "text-red-700" : "text-[#0A3960]"}`}
+                className={`flex items-center justify-center gap-0.5 text-center text-xs lg:max-w-2/12 lg:min-w-2/12 lg:text-sm ${timeLeft.includes("Retraso") ? "text-red-700" : "text-[#0A3960]"}`}
               >
                 <span>
                   {" "}

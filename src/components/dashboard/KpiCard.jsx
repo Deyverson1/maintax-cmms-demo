@@ -44,11 +44,11 @@ export default function KpiCards() {
   ];
 
   return (
-    <section className="flex gap-8">
+    <section className="mt-5 flex flex-wrap gap-4 lg:mt-0 lg:flex-row lg:gap-8">
       {KpiContent.map((data, index) => (
         <section
           key={index}
-          className="flex-1 rounded-xl bg-[#ffffff] p-8 text-lg shadow-[0_5px_50px_-15px_rgba(0,0,0,0.3)] shadow-gray-200"
+          className="flex-1 rounded-xl bg-[#ffffff] p-4 text-lg shadow-[0_5px_50px_-15px_rgba(0,0,0,0.3)] shadow-gray-200 lg:p-8"
         >
           <div className="mb-6 flex w-auto justify-between">
             <div className="rounded bg-gray-200 p-2 text-[#0A3960]">
