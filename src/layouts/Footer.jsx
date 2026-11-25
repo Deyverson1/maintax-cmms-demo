@@ -8,7 +8,7 @@ export default function Footer() {
         <p className="text-center">v 0.1.0 – Beta</p>
       </div>
       <p className="hidden text-center font-medium md:flex">
-        Gestión Industrial de Producción
+        Gestión Industrial de Mantenimiento
       </p>
     </footer>
   );

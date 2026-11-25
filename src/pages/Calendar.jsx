@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import CalendarNoteModal from "../components/calendar/CalendarNoteModal";
 import { categoriesOptions } from "../constants/noteCategories";
 import { ALERT_STYLES, ordersAlerts } from "../constants/calendarAlertStyles";
+import GeneralFooter from "../components/common/GeneralFooter";
 
 export default function Calendar() {
   //fetch principal de las ordenes
@@ -86,114 +87,117 @@ export default function Calendar() {
 
   const allEvents = [...events, ...noteEvents];
   return (
-    <section className="flex">
-      <SidebarNavigation isModalActive={showNotes} />
-      {showNotes ? (
-        <CalendarNoteModal
-          isEditing={isEditing}
-          setShowNotes={setShowNotes}
-          showNotes={showNotes}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          idNoteEditing={idNoteEditing}
-          setIdNoteEditing={setIdNoteEditing}
-          setEditing={setEditing}
-          setRefresh={setRefresh}
-          refresh={refresh}
-        />
-      ) : (
-        ""
-      )}
-      <section className="w-full px-4 lg:w-[80%] lg:px-12">
-        <GeneralHeader />
-        <div className="maintax-calendar w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <FullCalendar
-            initialView="dayGridWeek"
-            dateClick={(info) => {
-              setStartDate(info.dateStr);
-              setShowNotes(!showNotes);
-            }}
-            plugins={[dayGridPlugin, listPlugin, interactionPlugin]}
-
-            eventOrder={(a, b) => {
-              const A = a.extendedProps.item;
-              const B = b.extendedProps.item;
-
-              // completados al final
-              const aDone = A.status === "done";
-              const bDone = B.status === "done";
-              if (aDone !== bDone) return aDone ? 1 : -1;
-
-              // mayor prioridad primero
-              const pa = priorityWeight[A.priority] ?? 3;
-              const pb = priorityWeight[B.priority] ?? 3;
-              if (pa !== pb) return pa - pb;
-
-              // deadline más próximo primero
-              if (A.deadline !== B.deadline)
-                return A.deadline < B.deadline ? -1 : 1;
-
-              // desempate estable
-              return A.order_number - B.order_number;
-            }}
-            locale={esLocale}
-            firstDay={1}
-            height="auto"
-            expandRows={false}
-            fixedWeekCount={false}
-
-            dayMaxEvents={3}
-            views={{
-              dayGridMonth: { dayMaxEvents: 3 },
-              dayGridWeek: { dayMaxEvents: false },
-            }}
-            headerToolbar={{
-              left: "prev,next today",
-              center: "title",
-              right: "dayGridMonth,dayGridWeek,listMonth",
-            }}
-            buttonText={{
-              today: "Hoy",
-              month: "Mes",
-              week: "Semana",
-              list: "Lista",
-            }}
-            moreLinkContent={(arg) => `+${arg.num} más`}
-            events={allEvents}
-
-            eventContent={renderEvent}
-            eventClick={(info) => {
-              const { type, item } = info.event.extendedProps;
-              if (type === "note") {
-                setEditing(true);
-                setShowNotes(true);
-                setIdNoteEditing(info.event.id);
-              } else navigate(`/WorkOrders/Edit/${info.event.id}`);
-            }}
+    <section className="flex flex-col">
+      <section className="flex">
+        <SidebarNavigation isModalActive={showNotes} />
+        {showNotes ? (
+          <CalendarNoteModal
+            isEditing={isEditing}
+            setShowNotes={setShowNotes}
+            showNotes={showNotes}
+            startDate={startDate}
+            setStartDate={setStartDate}
+            idNoteEditing={idNoteEditing}
+            setIdNoteEditing={setIdNoteEditing}
+            setEditing={setEditing}
+            setRefresh={setRefresh}
+            refresh={refresh}
           />
-        </div>
-        <div className="jus flex flex-col gap-2 py-10">
-          <h5 className="font-mono uppercase">Código de colores:</h5>
-          <ul className="flex gap-2">
-            {categoriesOptions.map((dato) => (
-              <li
-                key={dato.value}
-                className={`${dato.eventStyle} rounded-lg border px-4 py-0.5`}
-              >
-                {dato.name}{" "}
-              </li>
-            ))}
-            {ordersAlerts.map((dato) => (
-              <li
-                key={dato.name}
-                className={`${dato.style} rounded-lg border px-4 py-0.5`}
-              >
-                {dato.name}{" "}
-              </li>
-            ))}
-          </ul>
-        </div>
+        ) : (
+          ""
+        )}
+        <section className="w-full px-4 lg:w-[80%] lg:px-12">
+          <GeneralHeader />
+          <div className="maintax-calendar w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <FullCalendar
+              initialView="dayGridWeek"
+              dateClick={(info) => {
+                setStartDate(info.dateStr);
+                setShowNotes(!showNotes);
+              }}
+              plugins={[dayGridPlugin, listPlugin, interactionPlugin]}
+
+              eventOrder={(a, b) => {
+                const A = a.extendedProps.item;
+                const B = b.extendedProps.item;
+
+                // completados al final
+                const aDone = A.status === "done";
+                const bDone = B.status === "done";
+                if (aDone !== bDone) return aDone ? 1 : -1;
+
+                // mayor prioridad primero
+                const pa = priorityWeight[A.priority] ?? 3;
+                const pb = priorityWeight[B.priority] ?? 3;
+                if (pa !== pb) return pa - pb;
+
+                // deadline más próximo primero
+                if (A.deadline !== B.deadline)
+                  return A.deadline < B.deadline ? -1 : 1;
+
+                // desempate estable
+                return A.order_number - B.order_number;
+              }}
+              locale={esLocale}
+              firstDay={1}
+              height="auto"
+              expandRows={false}
+              fixedWeekCount={false}
+
+              dayMaxEvents={3}
+              views={{
+                dayGridMonth: { dayMaxEvents: 3 },
+                dayGridWeek: { dayMaxEvents: false },
+              }}
+              headerToolbar={{
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,dayGridWeek,listMonth",
+              }}
+              buttonText={{
+                today: "Hoy",
+                month: "Mes",
+                week: "Semana",
+                list: "Lista",
+              }}
+              moreLinkContent={(arg) => `+${arg.num} más`}
+              events={allEvents}
+
+              eventContent={renderEvent}
+              eventClick={(info) => {
+                const { type, item } = info.event.extendedProps;
+                if (type === "note") {
+                  setEditing(true);
+                  setShowNotes(true);
+                  setIdNoteEditing(info.event.id);
+                } else navigate(`/WorkOrders/Edit/${info.event.id}`);
+              }}
+            />
+          </div>
+          <div className="jus flex flex-col gap-2 py-10">
+            <h5 className="font-mono uppercase">Código de colores:</h5>
+            <ul className="flex gap-2">
+              {categoriesOptions.map((dato) => (
+                <li
+                  key={dato.value}
+                  className={`${dato.eventStyle} rounded-lg border px-4 py-0.5`}
+                >
+                  {dato.name}{" "}
+                </li>
+              ))}
+              {ordersAlerts.map((dato) => (
+                <li
+                  key={dato.name}
+                  className={`${dato.style} rounded-lg border px-4 py-0.5`}
+                >
+                  {dato.name}{" "}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </section>
+      <GeneralFooter />
     </section>
   );
 }

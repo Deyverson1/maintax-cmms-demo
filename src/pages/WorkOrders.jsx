@@ -6,12 +6,11 @@ import PlusIconAlone from "../icons/plusIconAlone";
 import SearchIcon from "../icons/searchIcon";
 import ChevronDown from "../icons/chevronDown";
 import OrderCard from "../components/work-orders/list/orderCard";
-import Footer from "../layouts/Footer";
-import DashboardFooter from "../components/dashboard/DashboardFooter";
 import { useEffect, useState } from "react";
 import { supabase } from "../utility/supabase";
 import SkeletonCard from "../components/common/SkeletonCard";
 import WatchIcon from "../icons/watchIcon";
+import GeneralFooter from "../components/common/GeneralFooter";
 
 export default function WorkOrders() {
   //almacena todos los datos
@@ -141,7 +140,7 @@ export default function WorkOrders() {
           )}
         </section>
       </div>
-      <DashboardFooter />
+      <GeneralFooter />
     </main>
   );
 }

@@ -8,6 +8,7 @@ import FilterSearch from "../icons/filterSearch";
 import RequisitionViewerCard from "../components/requisition-viewer/RequisitionViewerCard";
 import SearchIcon from "../icons/searchIcon";
 import { useKpis } from "../hooks/useKpis";
+import GeneralFooter from "../components/common/GeneralFooter";
 
 export default function Requisitions() {
   //búsqueda por text
@@ -46,95 +47,98 @@ export default function Requisitions() {
   ];
 
   return (
-    <section className="flex bg-[#F8FAFB]">
-      <SidebarNavigation />
-      <section className="w-full px-2 md:w-[80%] md:px-12">
-        <GeneralHeader />
-        <section className="mt-10 flex flex-wrap gap-4 md:flex-nowrap">
-          <div className="flex w-full flex-wrap gap-x-6 gap-y-4 text-center md:w-[70%] md:flex-row">
-            {dataRequisitions.map((data) => (
-              <div
-                className="flex flex-1 items-center justify-center gap-4 gap-y-4 rounded-xl border border-gray-200 bg-white px-8 py-4 md:flex-col md:items-start md:justify-start md:py-8 md:pb-10"
-                key={data.name}
-              >
-                <h4 className="font-mono text-xs tracking-wider text-[#546371] uppercase md:text-base">
-                  {data.name}{" "}
-                </h4>
-                <p className="text-lg font-black text-[#0A3960] md:text-4xl">
-                  {data.amount}{" "}
-                  {/* <span className="ml-2 text-lg font-semibold text-[#5E7E95] ">
+    <div className="flex flex-col gap-5">
+      <section className="flex bg-[#F8FAFB]">
+        <SidebarNavigation />
+        <section className="w-full px-2 md:w-[80%] md:px-12">
+          <GeneralHeader />
+          <section className="mt-10 flex flex-wrap gap-4 md:flex-nowrap">
+            <div className="flex w-full flex-wrap gap-x-6 gap-y-4 text-center md:w-[70%] md:flex-row">
+              {dataRequisitions.map((data) => (
+                <div
+                  className="flex flex-1 items-center justify-center gap-4 gap-y-4 rounded-xl border border-gray-200 bg-white px-8 py-4 md:flex-col md:items-start md:justify-start md:py-8 md:pb-10"
+                  key={data.name}
+                >
+                  <h4 className="font-mono text-xs tracking-wider text-[#546371] uppercase md:text-base">
+                    {data.name}{" "}
+                  </h4>
+                  <p className="text-lg font-black text-[#0A3960] md:text-4xl">
+                    {data.amount}{" "}
+                    {/* <span className="ml-2 text-lg font-semibold text-[#5E7E95] ">
                     {data.note}{" "}
                   </span> */}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="w-full md:w-[30%]">
-            <div className="flex flex-col gap-y-3 rounded-xl border border-gray-200 bg-[#0A3960] p-6 md:px-10 md:py-8 md:pb-10">
-              <h4 className="z-1 font-bold tracking-widest text-gray-300 uppercase">
-                Nueva Requisición
-              </h4>
-              <p className="z-1 text-gray-300">
-                Crea una nueva requisición por materiales, activos o servicios
-              </p>
-              <Link
-                to={"/RequisitionGenerator"}
-                className="z-1 mt-3 self-start rounded bg-white px-6 py-2 font-semibold tracking-widest text-[#0A3960] uppercase"
-              >
-                Crear requisición
-              </Link>
-              <ShoppingCartIcon
-                size={250}
-                className={
-                  "absolute top-62 right-0 z-0 text-white/10 md:top-39 md:right-6"
-                }
-              />
-            </div>
-          </div>
-        </section>
-        <section className="flex flex-col py-10">
-          <h3 className="mr-4 text-xl font-bold text-[#191C1D]">
-            Listado de Requisiciones
-          </h3>
-          <div className="mt-3 flex w-full flex-col items-center gap-4 md:flex-row lg:mt-5">
-            <section className="w-full lg:block">
-              <div className="relative w-full">
-                <input
-                  type="text"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                  className="w-full rounded-xl bg-gray-200 px-12 py-3 text-xs outline-gray-200 md:text-base"
-                  placeholder="Buscar requisiciones. Ej. Servicio de afilado cuchilla"
-                />
-                <div className="absolute top-1/2 left-4 -translate-y-2 text-gray-500">
-                  <SearchIcon size={18} />
+                  </p>
                 </div>
-              </div>
-            </section>
-
-            <div className="flex h-fit w-full flex-wrap items-center justify-center gap-2 lg:flex-nowrap lg:gap-4">
-              {statuses.map((status) => (
-                <button
-                  key={status}
-                  onClick={() => setStatusFilter(status)}
-                  className={`letter cursor-pointer rounded-full border px-4 py-1.5 text-xs whitespace-nowrap uppercase md:text-sm ${
-                    statusFilter === status
-                      ? "border-gray-400 bg-gray-200"
-                      : "border-gray-300 bg-white"
-                  }`}
-                >
-                  {status}
-                </button>
               ))}
             </div>
-          </div>
+            <div className="w-full md:w-[30%]">
+              <div className="flex flex-col gap-y-3 rounded-xl border border-gray-200 bg-[#0A3960] p-6 md:px-10 md:py-8 md:pb-10">
+                <h4 className="z-1 font-bold tracking-widest text-gray-300 uppercase">
+                  Nueva Requisición
+                </h4>
+                <p className="z-1 text-gray-300">
+                  Crea una nueva requisición por materiales, activos o servicios
+                </p>
+                <Link
+                  to={"/RequisitionGenerator"}
+                  className="z-1 mt-3 self-start rounded bg-white px-6 py-2 font-semibold tracking-widest text-[#0A3960] uppercase"
+                >
+                  Crear requisición
+                </Link>
+                <ShoppingCartIcon
+                  size={250}
+                  className={
+                    "absolute top-62 right-0 z-0 text-white/10 md:top-39 md:right-6"
+                  }
+                />
+              </div>
+            </div>
+          </section>
+          <section className="flex flex-col py-10">
+            <h3 className="mr-4 text-xl font-bold text-[#191C1D]">
+              Listado de Requisiciones
+            </h3>
+            <div className="mt-3 flex w-full flex-col items-center gap-4 md:flex-row lg:mt-5">
+              <section className="w-full lg:block">
+                <div className="relative w-full">
+                  <input
+                    type="text"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    className="w-full rounded-xl bg-gray-200 px-12 py-3 text-xs outline-gray-200 md:text-base"
+                    placeholder="Buscar requisiciones. Ej. Servicio de afilado cuchilla"
+                  />
+                  <div className="absolute top-1/2 left-4 -translate-y-2 text-gray-500">
+                    <SearchIcon size={18} />
+                  </div>
+                </div>
+              </section>
+
+              <div className="flex h-fit w-full flex-wrap items-center justify-center gap-2 lg:flex-nowrap lg:gap-4">
+                {statuses.map((status) => (
+                  <button
+                    key={status}
+                    onClick={() => setStatusFilter(status)}
+                    className={`letter cursor-pointer rounded-full border px-4 py-1.5 text-xs whitespace-nowrap uppercase md:text-sm ${
+                      statusFilter === status
+                        ? "border-gray-400 bg-gray-200"
+                        : "border-gray-300 bg-white"
+                    }`}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+          <RequisitionViewerCard
+            setRefresh={setRefresh}
+            searchText={searchText}
+            statusFilter={statusFilter}
+          />
         </section>
-        <RequisitionViewerCard
-          setRefresh={setRefresh}
-          searchText={searchText}
-          statusFilter={statusFilter}
-        />
       </section>
-    </section>
+      <GeneralFooter />
+    </div>
   );
 }

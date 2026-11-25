@@ -1,10 +1,10 @@
 import SidebarNavigation from "../components/ui/SidebarNavigation";
 import GeneralHeader from "../components/general-header/GeneralHeader";
-import KpiCopilot from "../components/dashboard/KpiCard";
 import KpiCards from "../components/dashboard/KpiCard";
 import PendingTasks from "../components/dashboard/PendingTasks";
 import RecentActivity from "../components/dashboard/RecentActivity";
-import DashboardFooter from "../components/dashboard/DashboardFooter";
+
+import GeneralFooter from "../components/common/GeneralFooter";
 
 export default function MainDashboard() {
   const hora = new Date().getHours();
@@ -51,7 +51,7 @@ export default function MainDashboard() {
           </main>
         </section>
       </div>
-      <DashboardFooter />
+      <GeneralFooter />
     </main>
   );
 }
